@@ -19,6 +19,7 @@
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -49,22 +50,6 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
-    </target>
-    <target name="Bi_test.enter">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="Bi_test" todir="${junit.output.dir}"/>
-            <classpath refid="udesk_CS.classpath"/>
-        </junit>
-    </target>
-    <target name="Bi_test">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="Bi_test" todir="${junit.output.dir}"/>
-            <classpath refid="udesk_CS.classpath"/>
-        </junit>
     </target>
     <target name="CalculatorTest (1)">
         <java classname="CalculatorTest" failonerror="true" fork="yes">
@@ -103,12 +88,35 @@
             <classpath refid="udesk_CS.classpath"/>
         </junit>
     </target>
+    <target name="Tickets_test.enter">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="Tickets_test" todir="${junit.output.dir}"/>
+            <classpath refid="udesk_CS.classpath"/>
+        </junit>
+    </target>
+    <target name="Tickets_test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="Tickets_test" todir="${junit.output.dir}"/>
+            <classpath refid="udesk_CS.classpath"/>
+        </junit>
+    </target>
     <target name="udesk_CS">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="Bi_test" todir="${junit.output.dir}"/>
-            <test name="TestDemo" todir="${junit.output.dir}"/>
+            <test name="Tickets_test" todir="${junit.output.dir}"/>
+            <classpath refid="udesk_CS.classpath"/>
+        </junit>
+    </target>
+    <target name="Tickets_test.delete_ticket">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="Tickets_test" todir="${junit.output.dir}"/>
             <classpath refid="udesk_CS.classpath"/>
         </junit>
     </target>
